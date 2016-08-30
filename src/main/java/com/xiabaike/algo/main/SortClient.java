@@ -18,6 +18,8 @@ public class SortClient {
 		sort = new QuickSort();
 		// 堆排序
 		sort = new HeapSort();
+		// 合并排序
+		sort = new MergeSort();
 		sort.sort(arr);
 		// 输出排序结果
 		for(int num : arr) {
