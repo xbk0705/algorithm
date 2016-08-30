@@ -14,6 +14,10 @@ public class SortClient {
 		sort = new InsertSort();
 		// 希尔排序
 		sort = new ShellSort();
+		// 快速排序
+		sort = new QuickSort();
+		// 堆排序
+		sort = new HeapSort();
 		sort.sort(arr);
 		// 输出排序结果
 		for(int num : arr) {
