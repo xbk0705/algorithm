@@ -14,7 +14,9 @@ public class MergeSort implements ISort{
 	private static void sort(int[] arr, int start, int end) {
 		if(start < end) {
 			int middle = (start + end) / 2;
+			//对左边进行递归
 			sort(arr, start, middle);
+			//对右边进行递归
 			sort(arr,middle + 1, end);
 			merge(arr, start, middle, end);
 		}
@@ -27,6 +29,7 @@ public class MergeSort implements ISort{
 		int n = middle + 1;
 		int k = i;
 		while(m <= middle && n <= j) {
+			//从两个数组中选取较小的数放入中间数组
 			if(arr[m] < arr[n]) {
 				temp[k++] = arr[m++];
 			}else{
@@ -34,12 +37,14 @@ public class MergeSort implements ISort{
 			}
 		}
 		
+		//将剩余的部分放入中间数组
 		while(m <= middle) {
 			temp[k++] = arr[m++];
 		}
 		while(n <= j) {
 			temp[k++] = arr[n++];
 		}
+		//将中间数组复制回原数组
 		while(i <= j) {
 			arr[i] = temp[i++];
 		}
