@@ -7,7 +7,7 @@ import java.util.Arrays;
  * 输入: nums = [1,2,3,4,5,6,7], k = 3
  * 输出: [5,6,7,1,2,3,4]
  *
- * @author xiabaike <xiabaike@kuaishou.com>
+ * @author xiabaike
  * Created on 2022-01-21
  */
 public class RotateArray {
