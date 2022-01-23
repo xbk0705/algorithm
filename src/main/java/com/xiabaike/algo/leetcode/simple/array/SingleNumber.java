@@ -1,4 +1,4 @@
-package com.xiabaike.algo.leetcode;
+package com.xiabaike.algo.leetcode.simple.array;
 
 import java.util.Arrays;
 
