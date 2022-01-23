@@ -1,6 +1,7 @@
 package com.xiabaike.algo.datastructrue;
 
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -65,7 +66,7 @@ public class BinaryTree {
 
     // 层次遍历
     public void levelTraverse() {
-        Queue<Node> queue = new LinkedList<>();
+        Queue<Node> queue = new LinkedList();
         Node node = root;
         queue.offer(node);
         while (queue != null && queue.size() != 0) {

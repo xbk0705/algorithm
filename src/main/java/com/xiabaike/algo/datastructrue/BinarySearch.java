@@ -12,7 +12,7 @@ public class BinarySearch {
         int mid;
 
         while(left < rigth) {
-            mid = (rigth - left) / 2;
+            mid = (rigth - left) / 2 + left;
             if(key == array[mid]) {
                 return mid;
             }

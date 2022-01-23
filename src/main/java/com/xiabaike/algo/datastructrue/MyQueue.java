@@ -4,7 +4,7 @@ package com.xiabaike.algo.datastructrue;
  * @Author xiabaike
  * @Date 2019/3/10 15:31
  */
-public class Queue {
+public class MyQueue {
 
     private int[] data;
 
@@ -14,7 +14,7 @@ public class Queue {
 
     private Integer tail;
 
-    public Queue(){
+    public MyQueue(){
         data = new int[length];
         head = null;
         tail = null;
@@ -45,7 +45,7 @@ public class Queue {
     }
 
     public static void main(String[] args) {
-        Queue queue = new Queue();
+        MyQueue queue = new MyQueue();
         queue.enqueue(4);
         queue.enqueue(9);
         queue.enqueue(1);
@@ -54,6 +54,5 @@ public class Queue {
         System.out.println(queue.dequeue());
         System.out.println(queue.dequeue());
         System.out.println(queue.dequeue());
-
     }
 }
