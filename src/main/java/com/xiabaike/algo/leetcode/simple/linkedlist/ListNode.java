@@ -2,8 +2,8 @@ package com.xiabaike.algo.leetcode.simple.linkedlist;
 
 public class ListNode {
 
-    private Integer val;
-    private ListNode next;
+    public Integer val;
+    public ListNode next;
 
     public ListNode(Integer val) {
         this.val = val;
