@@ -9,14 +9,28 @@ package com.xiabaike.algo.leetcode.simple.linkedlist;
 public class MergeTwoLists {
 
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-
-        ListNode temp1;
-        ListNode temp2;
-        while ((temp1 = list1.getNext()) != null && (temp2 = list2.getNext()) != null) {
-
+        if (list1 == null) {
+            return list2;
+        }
+        if (list2 == null) {
+            return list1;
         }
 
-        return null;
+        ListNode cur = new ListNode(0);
+        ListNode head = cur;
+        while (list1 != null && list2 != null) {
+            if (list1.val < list2.val) {
+                cur.next = list1;
+                list1 = list1.next;
+            } else {
+                cur.next = list2;
+                list2 = list2.next;
+            }
+            cur = cur.next;
+        }
+
+        cur.next = list1 == null ? list2 : list1;
+        return head.next;
     }
 
 }
