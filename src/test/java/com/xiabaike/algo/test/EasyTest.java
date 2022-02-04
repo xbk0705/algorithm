@@ -13,9 +13,8 @@ public class EasyTest {
 
     @Test
     public void testP() {
-        Map<String, String> map = new HashMap<>();
-        map.put("xbkkey", "xbkvalue");
-
+        String binary = Integer.toBinaryString(5);
+        System.out.println(binary);
     }
 
 }
