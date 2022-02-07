@@ -12,6 +12,7 @@ public class NumberOfSubarrays {
 
     public int numberOfSubarrays(int[] nums, int k) {
 
+        return 0;
     }
 
 }
