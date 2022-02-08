@@ -5,7 +5,7 @@ package com.xiabaike.algo.secondtime.simple2.array;
  * 你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。
  * 返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。
  *
- * 输入：[7,1,5,3,6,4]  输出：5
+ * 输入：[7,1,5,3,6,4]  输出：7
  * 解释：在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
  *      注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
  */
@@ -15,20 +15,11 @@ public class MaxProfit {
     public int maxProfit(int[] prices) {
         // 如果这一天交易完后手里没有股票，那么可能的转移状态为前一天已经没有股票，即 dp[i-1][0]，或者前一天结束的时候手里持有一支股票
         // 即dp[i-1][1]，这时候我们要将其卖出，并获得 prices[i] 的收益。
-        //  dp[i][0]=max{dp[i−1][0],dp[i−1][1]+prices[i]}
+        //  dp[i][0] = max{dp[i−1][0], dp[i−1][1] + prices[i]}
         // 如果这一天交易完后手里有股票，可能的转移状态为前一天已经持有一支股票，即 dp[i−1][1]，或者前一天结束时还没有股票，即
         // dp[i−1][0]，这时候我们要将其买入，并减少 prices[i] 的收益。
-        //  dp[i][1]=max{dp[i−1][1],dp[i−1][0]−prices[i]}
-
-        // 第i天没持有股票的利润：
-        //  如果i天没买没卖，则最大利润等于i-1天没持有股票的利润
-        //  如果i天有卖出股票，则最大利润等于i-1天持有股票的利润加上i天卖出的最大利润
-        // NOT(i) = max(NOT(i - 1), CHIYOU(i - 1) + prices[i]);
-        // 第i天持有股票的利润：
-        //  如果i天买入股票，则最大利润等于 -prices[i]
-        //  如果i天没买没卖，则最大利润等于i-1天持有股票的利润
-        // CHIYOU(i) = max(CHIYOU(i - 1), - prices[i]);
-        if (prices == null || prices.length == 0) {
+        //  dp[i][1] = max{dp[i−1][1], dp[i−1][0] − prices[i]}
+        if (prices == null || prices.length < 2) {
             return 0;
         }
         int not = 0;
@@ -65,7 +56,7 @@ public class MaxProfit {
         int min = 0;
         int max = 0;
         for (int i = 1; i < prices.length; i++) {
-            min = Math.min(min, 0) + prices[i] - prices[i - 1];
+            min = Math.max(min, 0) + prices[i] - prices[i - 1];
             max = Math.max(max, min);
         }
         return max;
@@ -117,7 +108,7 @@ public class MaxProfit {
     public static void main(String[] args) {
         MaxProfit maxProfit = new MaxProfit();
         int[] prices = {7,1,5,3,6,4};
-        int lirun = maxProfit.maxProfit(prices);
+        int lirun = maxProfit.maxProfit3(prices);
         System.out.println(lirun);
     }
 
