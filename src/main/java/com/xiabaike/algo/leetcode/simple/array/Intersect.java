@@ -1,6 +1,8 @@
 package com.xiabaike.algo.leetcode.simple.array;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 给你两个整数数组 nums1 和 nums2 ，请你以数组形式返回两数组的交集。
@@ -13,42 +15,50 @@ import java.util.Arrays;
 public class Intersect {
 
     public int[] intersect(int[] nums1, int[] nums2) {
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-
-        int length;
-        if (nums1.length > nums2.length) {
-            length = nums2.length;
-        } else {
-            length = nums1.length;
-        }
-        int[] result = new int[length];
-
-        int left = 0;
-        int right = 0;
+        int[] nums = new int[nums1.length];
         int index = 0;
-        while (left < nums1.length && right < nums2.length) {
-            if (nums1[left] == nums2[right]) {
-                result[index] = nums1[left];
-                index++;
-                left++;
-                right++;
-            } else if (nums1[left] > nums2[right]) {
-                right++;
-            } else if (nums1[left] < nums2[right]) {
-                left++;
+
+        for (int i = 0; i < nums1.length; i++) {
+            for (int j = 0; j < nums2.length; j++) {
+                if (nums1[i] == nums2[j]) {
+                    nums[index++] = nums1[i];
+                    i++;
+                } else if (index > 0) {
+                    return Arrays.copyOfRange(nums, 0, index);
+                }
             }
         }
-        return Arrays.copyOfRange(result, 0, index);
+        return Arrays.copyOfRange(nums, 0, index);
+    }
+
+    public int[] intersect2(int[] nums1, int[] nums2) {
+
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int num : nums1) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        int[] nums = new int[nums1.length];
+        int index = 0;
+        for (int num : nums2) {
+            if (map.containsKey(num)) {
+                int count = map.get(num);
+                if (count > 0) {
+                    nums[index] = num;
+                    index++;
+                    map.put(num, count - 1);
+                }
+            }
+        }
+        return Arrays.copyOfRange(nums, 0 ,index);
     }
 
     public static void main(String[] args) {
         Intersect intersect = new Intersect();
-//        int[] nums1 = {4,9,5};
-//        int[] nums2 = {9,4,9,8,4};
+        int[] nums1 = {4,9,5};
+        int[] nums2 = {9,4,9,8,4};
 
-        int[] nums1 = {1,2,2,1};
-        int[] nums2 = {2,2};
+//        int[] nums1 = {1,2,2,1};
+//        int[] nums2 = {2,2};
         int[] result = intersect.intersect(nums1, nums2);
         System.out.println(Arrays.toString(result));
 
