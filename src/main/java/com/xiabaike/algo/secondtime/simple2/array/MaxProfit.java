@@ -13,12 +13,14 @@ public class MaxProfit {
 
     // 动态规划
     public int maxProfit(int[] prices) {
-        // 如果这一天交易完后手里没有股票，那么可能的转移状态为前一天已经没有股票，即 dp[i-1][0]，或者前一天结束的时候手里持有一支股票
-        // 即dp[i-1][1]，这时候我们要将其卖出，并获得 prices[i] 的收益。
-        //  dp[i][0] = max{dp[i−1][0], dp[i−1][1] + prices[i]}
-        // 如果这一天交易完后手里有股票，可能的转移状态为前一天已经持有一支股票，即 dp[i−1][1]，或者前一天结束时还没有股票，即
-        // dp[i−1][0]，这时候我们要将其买入，并减少 prices[i] 的收益。
-        //  dp[i][1] = max{dp[i−1][1], dp[i−1][0] − prices[i]}
+        // 第i天没持有股票的利润：
+        //  如果i天没买没卖，则最大利润等于i-1天没持有股票的利润
+        //  如果i天有卖出股票，则最大利润等于i-1天持有股票的利润加上i天卖出的最大利润
+        // NOT(i) = max(NOT(i - 1), CHIYOU(i - 1) + prices[i]);
+        // 第i天持有股票的利润：
+        //  如果i天买入股票，则最大利润等于 -prices[i]
+        //  如果i天没买没卖，则最大利润等于i-1天持有股票的利润
+        // CHIYOU(i) = max(CHIYOU(i - 1), - prices[i]);
         if (prices == null || prices.length < 2) {
             return 0;
         }
@@ -26,7 +28,7 @@ public class MaxProfit {
         int chiyou = -prices[0];
         for (int i = 1; i < prices.length; i++) {
             not = Math.max(not, chiyou + prices[i]);
-            chiyou = Math.max(chiyou, not - prices[i]);
+            chiyou = Math.max(chiyou, - prices[i]);
         }
         // 最大利润是最后一天卖出股票的最大利润
         return not;
@@ -58,49 +60,6 @@ public class MaxProfit {
         for (int i = 1; i < prices.length; i++) {
             min = Math.max(min, 0) + prices[i] - prices[i - 1];
             max = Math.max(max, min);
-        }
-        return max;
-    }
-
-    // 贪心算法
-    public int maxProfit4(int[] prices) {
-        if (prices == null || prices.length == 0) {
-            return 0;
-        }
-        // 只需要找到股票上涨的最大值和股票开始上涨的最小值，计算他们的差就是这段时间内股票的最大利润。
-        // 如果股票下跌就不用计算，最终只需要把所有股票上涨的时间段内的利润累加就是我们所要求的结果
-        int length = prices.length;
-        int total = 0;
-        int index = 0;
-        while (index < length) {
-            // 如果股票一直下跌就一直找，直到找到股票开始上涨为止
-            while (index < length - 1 && prices[index] >= prices[index + 1]) {
-                index++;
-            }
-            int min = prices[index];
-            // 找到股票上涨最大值
-            while (index < length - 1 && prices[index] <= prices[index + 1]) {
-                index++;
-            }
-            // 计算上涨期间的差值，然后累加
-            total += (prices[index] - min);
-            index++;
-        }
-        return total;
-    }
-
-    // 贪心算法
-    public int maxProfit5(int[] prices) {
-        if (prices == null || prices.length == 0) {
-            return 0;
-        }
-        // 比如a<b<c<d，因为从a到d一直是上涨的，那么最大值和最小值的差值就是d-a，也可以写成(b-a)+(c-b)+(d-c)，搞懂了这个公式所有的一切都明白了。
-        // 可以想象成数组中前一个值减去后一个值，构成一个新的数组，我们只需要计算这个新数组中正数的和即可
-        int max = 0;
-        for (int i = 1; i < prices.length; i++) {
-            // 原数组中如果后一个减去前一个是正数，说明是上涨的，
-            // 我们就要累加，否则就不累加
-            max += Math.max(prices[i] - prices[i - 1], 0);
         }
         return max;
     }
