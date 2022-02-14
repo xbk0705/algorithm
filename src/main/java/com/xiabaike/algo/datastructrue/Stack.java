@@ -1,6 +1,12 @@
 package com.xiabaike.algo.datastructrue;
 
+import java.util.Arrays;
+
 /**
+ * push时 ，满了，丢弃最早
+ * 底层用数组实现，不能链表
+ * push  pop 算法复杂度要求 O(1)
+ *
  * @author xiabaike <xiabaike@kuaishou.com>
  * Created on 2022-02-14
  */
@@ -9,125 +15,90 @@ public class Stack {
     private int[] data;
 
     // 栈顶指针
-    private int top = -1;
+    private int top = 0;
 
     // 栈底指针
-    private int end = -1;
+    private int end = 0;
 
     private int capacity;
 
-    private int size = 0;
-
     public Stack(int capacity) {
-        this.capacity = capacity;
-        this.data = new int[capacity];
+        this.capacity = capacity + 1;
+        this.data = new int[capacity + 1];
     }
 
     public boolean isFull() {
-        return size == capacity;
+        return (top + 1) % capacity == end;
     }
 
     public boolean isEmpty() {
-        return size == 0;
+        return top == end;
     }
 
-    public boolean push2(int value) {
+    public void push3(int value) {
         if (isFull()) {
-            top++;
-            top = top % size;
-        } else {
-            top++;
-            size++;
+            end = (end + 1) % capacity;
         }
+
         data[top] = value;
-        return true;
+        top = (top + 1) % capacity;
     }
 
-    // 入栈
-    public boolean push(int value) {
-        if (top == capacity - 1) {
-            // 满了
-            top = 0;
-            end = 1;
-        } else {
-            if (isFull()) {
-                end++;
-            }
-            top++;
-        }
-        data[top] = value;
-        return true;
-    }
-
-    // 出栈
-    public int pop() {
+    public int pop3() {
         if (isEmpty()) {
-            throw new RuntimeException("栈为空");
+            throw new RuntimeException("Stack is empty");
         }
-        int value;
-        if (isFull()) {
-            if (top - 1 < 0) {
-                top = size - 1;
-                value =  data[top];
-            } else {
-                value =  data[top--];
-            }
-        } else {
-            value = data[top--];
-        }
-        size--;
-        return value;
+
+        top = (top + capacity - 1) % capacity;
+        return data[top];
     }
 
-    public int getSize() {
-        return size;
+    public void printData() {
+        System.out.println(Arrays.toString(data));
     }
 
     public static void main(String[] args) {
         Stack stack = new Stack(5);
-//        int value = stack.pop();
+//        int value = stack.pop3();
 //        System.out.println(value);
 
-        stack.push2(0);
-        stack.push2(1);
-        stack.push2(2);
-        stack.push2(3);
-        int size = stack.getSize();
-        System.out.println(size);
-        int value = stack.pop();
-        System.out.println(value);
-        size = stack.getSize();
-        System.out.println(size);
+        stack.push3(0);
+        stack.push3(1);
+        stack.push3(2);
+        stack.push3(3);
 
-        stack.push2(3);
-        stack.push2(4);
-        stack.push2(5);
-        stack.push2(6);
-        stack.push2(7);
-        value = stack.pop();
+        int value = stack.pop3();
         System.out.println(value);
-        size = stack.getSize();
-        System.out.println(size);
 
-        stack.push2(7);
-        stack.push2(7);
-        stack.push2(7);
-        stack.push2(7);
-        stack.push2(7);
-        stack.push2(7);
-        size = stack.getSize();
-        System.out.println(size);
-        value = stack.pop();
+        stack.printData();
+
+        stack.push3(3);
+        stack.push3(4);
+        stack.push3(5);
+        stack.push3(6);
+        stack.push3(7);
+        value = stack.pop3();
         System.out.println(value);
-        value = stack.pop();
+
+        stack.push3(7);
+        stack.push3(7);
+        stack.push3(7);
+        stack.push3(7);
+        stack.push3(7);
+        stack.push3(7);
+        stack.printData();
+
+        value = stack.pop3();
         System.out.println(value);
-        value = stack.pop();
+        value = stack.pop3();
         System.out.println(value);
-        value = stack.pop();
+        value = stack.pop3();
         System.out.println(value);
-        value = stack.pop();
+        value = stack.pop3();
         System.out.println(value);
-        value = stack.pop();
+        value = stack.pop3();
+        System.out.println(value);
+        value = stack.pop3();
         System.out.println(value);
     }
 
