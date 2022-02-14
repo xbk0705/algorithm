@@ -13,18 +13,14 @@ public class Rotate {
         if (nums == null || nums.length < 2) {
             return;
         }
-        k = k % nums.length;
         int[] new_nums = new int[nums.length];
-        int index = 0;
-        for (int i = nums.length - k; i < nums.length; i++) {
-            new_nums[index++] = nums[i];
-        }
-        for (int i = 0; i < nums.length - k; i++) {
-            new_nums[index++] = nums[i];
-        }
-
+        // 把原数组值放到一个临时数组中，
         for (int i = 0; i < nums.length; i++) {
-            nums[i] = new_nums[i];
+            new_nums[i] = nums[i];
+        }
+        // 然后在把临时数组的值重新放到原数组，并且往右移动k位
+        for (int i = 0; i < nums.length; i++) {
+            nums[(i + k) % nums.length] = new_nums[i];
         }
     }
 
