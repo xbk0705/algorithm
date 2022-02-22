@@ -15,7 +15,7 @@ public class SortColors {
         // 移动2的下标
         int index2 = nums.length - 1;
         for (int i = 0; i <= index2; i++) {
-            // 当我们找到 22 时，我们需要不断地将其与 nums[index2] 进行交换，直到新的 nums[i] 不为 22。
+            // 当我们找到 2 时，我们需要不断地将其与 nums[index2] 进行交换，直到新的 nums[i] 不为 2。
             while (i <= index2 && nums[i] == 2) {
                 int temp = nums[i];
                 nums[i] = nums[index2];
