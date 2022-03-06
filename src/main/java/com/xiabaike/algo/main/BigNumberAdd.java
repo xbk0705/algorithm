@@ -41,9 +41,43 @@ public class BigNumberAdd {
         return result.reverse().toString();
     }
 
+    // 111 - 22 = 89
+    // 22 - 1111 = -1089
+    public String bigNumberSubtract(String num1, String num2) {
+        int i = num1.length() - 1;
+        int j = num2.length() - 1;
+        StringBuilder result = new StringBuilder();
+        int carry = 0;
+        int max = i > j ? i : j;
+        int res[] = new int[max + 1];
+        int k = max;
+        while (i >= 0 || j >= 0) {
+
+            int tmp1 = i >= 0 ? num1.charAt(i) - '0' : 0;
+            int tmp2 = j >= 0 ? num2.charAt(j) - '0' : 0;
+            int div;
+            if (i - 1 >= 0) {
+                div = 10 + tmp1 - tmp2 - carry;
+            } else {
+                div = tmp1 - tmp2 - carry;
+            }
+            result.append(div % 10);
+            carry = (div / 10 == 0) ? 1 : 0;
+            i--;
+            j--;
+        }
+
+
+        return result.toString();
+
+    }
+
     public static void main(String[] args) {
         BigNumberAdd bigNumberAdd = new BigNumberAdd();
         String result = bigNumberAdd.bigNumberAdd("23", "98");
+        System.out.println(result);
+
+        result = bigNumberAdd.bigNumberSubtract("22", "1111");
         System.out.println(result);
     }
 

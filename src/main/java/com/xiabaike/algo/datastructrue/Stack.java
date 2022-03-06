@@ -35,7 +35,7 @@ public class Stack {
         return top == end;
     }
 
-    public void push3(int value) {
+    public void push(int value) {
         if (isFull()) {
             end = (end + 1) % capacity;
         }
@@ -44,13 +44,18 @@ public class Stack {
         top = (top + 1) % capacity;
     }
 
-    public int pop3() {
+    public int pop() {
         if (isEmpty()) {
             throw new RuntimeException("Stack is empty");
         }
 
         top = (top + capacity - 1) % capacity;
         return data[top];
+    }
+
+    // 求出当前栈有效的数据的个数
+    public int size() {
+        return (top + capacity - end) % capacity;
     }
 
     public void printData() {
@@ -62,43 +67,43 @@ public class Stack {
 //        int value = stack.pop3();
 //        System.out.println(value);
 
-        stack.push3(0);
-        stack.push3(1);
-        stack.push3(2);
-        stack.push3(3);
+        stack.push(0);
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
 
-        int value = stack.pop3();
+        int value = stack.pop();
         System.out.println(value);
 
         stack.printData();
 
-        stack.push3(3);
-        stack.push3(4);
-        stack.push3(5);
-        stack.push3(6);
-        stack.push3(7);
-        value = stack.pop3();
+        stack.push(3);
+        stack.push(4);
+        stack.push(5);
+        stack.push(6);
+        stack.push(7);
+        value = stack.pop();
         System.out.println(value);
 
-        stack.push3(7);
-        stack.push3(7);
-        stack.push3(7);
-        stack.push3(7);
-        stack.push3(7);
-        stack.push3(7);
+        stack.push(7);
+        stack.push(7);
+        stack.push(7);
+        stack.push(7);
+        stack.push(7);
+        stack.push(7);
         stack.printData();
 
-        value = stack.pop3();
+        value = stack.pop();
         System.out.println(value);
-        value = stack.pop3();
+        value = stack.pop();
         System.out.println(value);
-        value = stack.pop3();
+        value = stack.pop();
         System.out.println(value);
-        value = stack.pop3();
+        value = stack.pop();
         System.out.println(value);
-        value = stack.pop3();
+        value = stack.pop();
         System.out.println(value);
-        value = stack.pop3();
+        value = stack.pop();
         System.out.println(value);
     }
 
