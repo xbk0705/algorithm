@@ -1,17 +1,13 @@
-package com.xiabaike.algo;
+package com.xiabaike.interview;
 
 import com.xiabaike.algo.leetcode.simple.tree.TreeNode;
 
 import java.util.LinkedList;
 
 public class Zhihu {
-
     public static void main(String[] args) {
         // 二叉树的层次优先
         Zhihu zhihu = new Zhihu();
-
-
-
     }
 
     public void bfs(TreeNode treeNode) {
@@ -31,5 +27,4 @@ public class Zhihu {
             }
         }
     }
-
 }
