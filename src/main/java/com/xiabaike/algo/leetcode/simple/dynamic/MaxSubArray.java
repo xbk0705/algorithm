@@ -11,6 +11,7 @@ package com.xiabaike.algo.leetcode.simple.dynamic;
  */
 public class MaxSubArray {
 
+    // 贪心算法
     // 只需要判断前一次sum是大于0还是小于0。
     // 如果前一次sum大于0，就继续累加，sum=前一次sum+num[i]。
     // 如果前一次sum小于0，我们直接把前面的舍弃，也就是说重新开始计算，否则会越加越小的，直接让sum=num[i]
@@ -21,6 +22,20 @@ public class MaxSubArray {
         for (int i = 1; i < nums.length; i++) {
             // 加和
             sum = Math.max(sum, 0) + nums[i];
+            // 取最大值
+            max = Math.max(max, sum);
+        }
+        return max;
+    }
+
+    // 动态规划
+    public int maxSubArray2(int[] nums) {
+        int sum = 0;
+        int max = nums[0];
+        for (int i = 0; i < nums.length; i++) {
+            // 加和
+            // 当前i的和 = max(当前值，当前值 + 前一个i的和)
+            sum = Math.max(nums[i], nums[i] + sum);
             // 取最大值
             max = Math.max(max, sum);
         }
