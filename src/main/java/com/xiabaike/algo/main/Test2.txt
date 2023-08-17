@@ -1,0 +1,161 @@
+Classfile /Users/xiabaike/workspace/study/algorithm/src/main/java/com/xiabaike/algo/main/Test2.class
+  Last modified 2022年3月18日; size 1398 bytes
+  MD5 checksum 83554b3da5345a2d01a74b1e92c74e1e
+  Compiled from "Test2.java"
+public class com.xiabaike.algo.main.Test2
+  minor version: 0
+  major version: 55
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #15                         // com/xiabaike/algo/main/Test2
+  super_class: #16                        // java/lang/Object
+  interfaces: 0, fields: 1, methods: 4, attributes: 3
+Constant pool:
+   #1 = Methodref          #16.#31        // java/lang/Object."<init>":()V
+   #2 = Class              #32            // java/lang/Thread
+   #3 = InvokeDynamic      #0:#37         // #0:run:()Ljava/lang/Runnable;
+   #4 = Methodref          #2.#38         // java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+   #5 = Methodref          #2.#39         // java/lang/Thread.start:()V
+   #6 = Long               2000l
+   #8 = Methodref          #2.#40         // java/lang/Thread.sleep:(J)V
+   #9 = Class              #41            // java/lang/InterruptedException
+  #10 = Methodref          #9.#42         // java/lang/InterruptedException.printStackTrace:()V
+  #11 = Fieldref           #15.#43        // com/xiabaike/algo/main/Test2.isOver:Z
+  #12 = Fieldref           #44.#45        // java/lang/System.out:Ljava/io/PrintStream;
+  #13 = String             #46            // it\'s end
+  #14 = Methodref          #47.#48        // java/io/PrintStream.println:(Ljava/lang/String;)V
+  #15 = Class              #49            // com/xiabaike/algo/main/Test2
+  #16 = Class              #50            // java/lang/Object
+  #17 = Utf8               isOver
+  #18 = Utf8               Z
+  #19 = Utf8               <init>
+  #20 = Utf8               ()V
+  #21 = Utf8               Code
+  #22 = Utf8               LineNumberTable
+  #23 = Utf8               main
+  #24 = Utf8               ([Ljava/lang/String;)V
+  #25 = Utf8               StackMapTable
+  #26 = Class              #51            // "[Ljava/lang/String;"
+  #27 = Utf8               lambda$main$0
+  #28 = Utf8               <clinit>
+  #29 = Utf8               SourceFile
+  #30 = Utf8               Test2.java
+  #31 = NameAndType        #19:#20        // "<init>":()V
+  #32 = Utf8               java/lang/Thread
+  #33 = Utf8               BootstrapMethods
+  #34 = MethodHandle       6:#52          // REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #35 = MethodType         #20            //  ()V
+  #36 = MethodHandle       6:#53          // REF_invokeStatic com/xiabaike/algo/main/Test2.lambda$main$0:()V
+  #37 = NameAndType        #54:#55        // run:()Ljava/lang/Runnable;
+  #38 = NameAndType        #19:#56        // "<init>":(Ljava/lang/Runnable;)V
+  #39 = NameAndType        #57:#20        // start:()V
+  #40 = NameAndType        #58:#59        // sleep:(J)V
+  #41 = Utf8               java/lang/InterruptedException
+  #42 = NameAndType        #60:#20        // printStackTrace:()V
+  #43 = NameAndType        #17:#18        // isOver:Z
+  #44 = Class              #61            // java/lang/System
+  #45 = NameAndType        #62:#63        // out:Ljava/io/PrintStream;
+  #46 = Utf8               it\'s end
+  #47 = Class              #64            // java/io/PrintStream
+  #48 = NameAndType        #65:#66        // println:(Ljava/lang/String;)V
+  #49 = Utf8               com/xiabaike/algo/main/Test2
+  #50 = Utf8               java/lang/Object
+  #51 = Utf8               [Ljava/lang/String;
+  #52 = Methodref          #67.#68        // java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #53 = Methodref          #15.#69        // com/xiabaike/algo/main/Test2.lambda$main$0:()V
+  #54 = Utf8               run
+  #55 = Utf8               ()Ljava/lang/Runnable;
+  #56 = Utf8               (Ljava/lang/Runnable;)V
+  #57 = Utf8               start
+  #58 = Utf8               sleep
+  #59 = Utf8               (J)V
+  #60 = Utf8               printStackTrace
+  #61 = Utf8               java/lang/System
+  #62 = Utf8               out
+  #63 = Utf8               Ljava/io/PrintStream;
+  #64 = Utf8               java/io/PrintStream
+  #65 = Utf8               println
+  #66 = Utf8               (Ljava/lang/String;)V
+  #67 = Class              #70            // java/lang/invoke/LambdaMetafactory
+  #68 = NameAndType        #71:#75        // metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #69 = NameAndType        #27:#20        // lambda$main$0:()V
+  #70 = Utf8               java/lang/invoke/LambdaMetafactory
+  #71 = Utf8               metafactory
+  #72 = Class              #77            // java/lang/invoke/MethodHandles$Lookup
+  #73 = Utf8               Lookup
+  #74 = Utf8               InnerClasses
+  #75 = Utf8               (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+  #76 = Class              #78            // java/lang/invoke/MethodHandles
+  #77 = Utf8               java/lang/invoke/MethodHandles$Lookup
+  #78 = Utf8               java/lang/invoke/MethodHandles
+{
+  public com.xiabaike.algo.main.Test2();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 3: 0
+
+  public static void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=3, locals=3, args_size=1
+         0: new           #2                  // class java/lang/Thread
+         3: dup
+         4: invokedynamic #3,  0              // InvokeDynamic #0:run:()Ljava/lang/Runnable;
+         9: invokespecial #4                  // Method java/lang/Thread."<init>":(Ljava/lang/Runnable;)V
+        12: astore_1
+        13: aload_1
+        14: invokevirtual #5                  // Method java/lang/Thread.start:()V
+        17: ldc2_w        #6                  // long 2000l
+        20: invokestatic  #8                  // Method java/lang/Thread.sleep:(J)V
+        23: goto          31
+        26: astore_2
+        27: aload_2
+        28: invokevirtual #10                 // Method java/lang/InterruptedException.printStackTrace:()V
+        31: iconst_1
+        32: putstatic     #11                 // Field isOver:Z
+        35: return
+      Exception table:
+         from    to  target type
+            17    23    26   Class java/lang/InterruptedException
+      LineNumberTable:
+        line 8: 0
+        line 13: 13
+        line 15: 17
+        line 18: 23
+        line 16: 26
+        line 17: 27
+        line 19: 31
+        line 20: 35
+      StackMapTable: number_of_entries = 2
+        frame_type = 255 /* full_frame */
+          offset_delta = 26
+          locals = [ class "[Ljava/lang/String;", class java/lang/Thread ]
+          stack = [ class java/lang/InterruptedException ]
+        frame_type = 4 /* same */
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: iconst_0
+         1: putstatic     #11                 // Field isOver:Z
+         4: return
+      LineNumberTable:
+        line 5: 0
+}
+SourceFile: "Test2.java"
+InnerClasses:
+  public static final #73= #72 of #76;    // Lookup=class java/lang/invoke/MethodHandles$Lookup of class java/lang/invoke/MethodHandles
+BootstrapMethods:
+  0: #34 REF_invokeStatic java/lang/invoke/LambdaMetafactory.metafactory:(Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite;
+    Method arguments:
+      #35 ()V
+      #36 REF_invokeStatic com/xiabaike/algo/main/Test2.lambda$main$0:()V
+      #35 ()V

@@ -1,6 +1,7 @@
 package com.xiabaike.algo.sort;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * 快速排序
@@ -47,5 +48,34 @@ public class QuickSort implements ISort{
 				quickSort(arr, rtemp + 1, right);
 			}
 		}
+	}
+
+	private static Random random = new Random();
+
+	private static void quickSort2(int[] arr, int left, int right) {
+		int index = partition(arr, left, right);
+		quickSort2(arr, left, index - 1);
+		quickSort2(arr, index + 1, right);
+	}
+
+	private static int partition(int[] arr, int left, int right) {
+		int index = random.nextInt(right - left + 1) + left;
+		int lTmp = left;
+		int base = arr[index];
+		swap(arr, left, index);
+		for (int i = left + 1; i <= right; i++) {
+			if (arr[i] < base) {
+				lTmp++;
+				swap(arr, i, lTmp);
+			}
+		}
+		swap(arr, left, lTmp);
+		return index;
+	}
+
+	private static void swap (int[] arr, int left, int right) {
+		int tmp = arr[left];
+		arr[left] = arr[right];
+		arr[right] = tmp;
 	}
 }
